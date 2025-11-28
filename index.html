@@ -6,8 +6,8 @@
   <title>Открыть бота</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0b0b0b">
-  <meta http-equiv="refresh" content="0;url=https://t.me/VText_Transcribe_Bot?start">
   <style>
     :root {
       color-scheme: light dark;
@@ -54,6 +54,16 @@
       line-height: 1.6;
       font-size: 15px;
     }
+    .steps {
+      text-align: left;
+      margin: 0 0 24px;
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+    .steps li {
+      margin-bottom: 8px;
+    }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -75,24 +85,23 @@
       box-shadow: 0 4px 16px rgba(79, 172, 254, 0.3);
     }
   </style>
-  <script>
-    // JavaScript redirect is used as a fallback if meta refresh is blocked.
-    window.addEventListener("DOMContentLoaded", () => {
-      const target = "https://t.me/VText_Transcribe_Bot?start";
-      try {
-        window.location.replace(target);
-      } catch (_) {
-        window.location.href = target;
-      }
-    });
-  </script>
 </head>
 <body>
   <div class="card">
     <img class="logo" src="logo.png" alt="Логотип бота">
-    <h1>Открываем бота</h1>
-    <p>Если редирект не сработал автоматически, нажмите кнопку ниже, чтобы открыть бота в Telegram.</p>
+    <h1>Открыть бота</h1>
+    <p>Добавьте эту страницу на экран домой, чтобы быстро переходить к боту в Telegram.</p>
+    <ol class="steps">
+      <li>Откройте меню «Поделиться».</li>
+      <li>Выберите «На экран домой» (или «Add to Home Screen»).</li>
+      <li>Подтвердите добавление ярлыка.</li>
+    </ol>
     <a class="btn" href="https://t.me/VText_Transcribe_Bot?start">Открыть в Telegram</a>
   </div>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js").catch(() => {});
+    }
+  </script>
 </body>
 </html>
