@@ -10,6 +10,21 @@
   <meta name="apple-mobile-web-app-title" content="Бот">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#0b0b0b">
+  <script>
+    (function () {
+      const target = "https://t.me/VText_Transcribe_Bot?start";
+      const isStandalone =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone;
+
+      if (isStandalone) {
+        // Прячем содержимое, чтобы ничего не мигало перед редиректом.
+        document.documentElement.style.backgroundColor = "#000000";
+        document.documentElement.style.visibility = "hidden";
+        window.location.replace(target);
+      }
+    })();
+  </script>
   <style>
     :root {
       color-scheme: light dark;
@@ -139,15 +154,6 @@
     <a class="btn" href="https://t.me/VText_Transcribe_Bot?start">Открыть в Telegram</a>
   </div>
   <script>
-    const target = "https://t.me/VText_Transcribe_Bot?start";
-    const isStandalone = () =>
-      window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
-
-    if (isStandalone()) {
-      // Если открыто с ярлыка, сразу отправляем в Telegram.
-      window.location.replace(target);
-    }
-
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
         .register("service-worker.js")
